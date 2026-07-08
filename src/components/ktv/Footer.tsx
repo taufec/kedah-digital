@@ -14,7 +14,7 @@ export function Footer() {
               {site.brand.taglineMs} — {site.brand.taglineEn}.
             </p>
             <div className="flex items-start gap-4 rounded-xl border border-foreground/10 bg-foreground/[0.02] p-4">
-              <img src={gamma.pptdk} alt="PPTDK" className="h-14 w-14 shrink-0 rounded-md bg-foreground/90 object-contain p-1" loading="lazy" />
+              <img src={gamma.pptdk} alt="PPTDK" className="h-14 w-14 shrink-0 rounded-md bg-white object-contain p-1 ring-1 ring-border" loading="lazy" />
               <p className="text-xs leading-relaxed text-muted-foreground">{site.footer.legal}</p>
             </div>
           </div>
