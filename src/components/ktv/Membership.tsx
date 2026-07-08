@@ -19,16 +19,20 @@ export function Membership() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="glass hover-lift group flex flex-col gap-4 rounded-2xl p-6"
+                className="glass group relative flex flex-col gap-4 overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_0_50px_-15px_oklch(0.85_0.18_145/0.5)]"
               >
-                <div className="flex items-center justify-between">
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "linear-gradient(180deg, oklch(0.85 0.18 145 / 0.08), transparent 60%)" }} />
+                <div className="relative flex items-center justify-between">
                   <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/80">/ 0{i + 1}</div>
-                  <div className="grid h-8 w-8 place-items-center rounded-full border border-white/10 text-primary transition-all group-hover:border-primary/50 group-hover:bg-primary/10">
+                  <div className="grid h-8 w-8 place-items-center rounded-full border border-white/10 text-primary transition-all group-hover:rotate-[-20deg] group-hover:border-primary/50 group-hover:bg-primary/10">
                     <ArrowRight className="h-3.5 w-3.5" />
                   </div>
                 </div>
-                <h3 className="font-display text-xl font-semibold text-foreground">{c.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+                <h3 className="relative font-display text-xl font-semibold text-foreground">{c.title}</h3>
+                <p className="relative text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+                <div className="relative mt-2 max-h-0 overflow-hidden text-xs text-primary/90 opacity-0 transition-all duration-500 group-hover:max-h-10 group-hover:opacity-100">
+                  <span className="font-mono uppercase tracking-[0.2em]">→ Ketahui lebih lanjut</span>
+                </div>
               </motion.div>
             ))}
           </div>
