@@ -1,0 +1,165 @@
+export const site = {
+  brand: {
+    name: "Kedah Tech Valley",
+    short: "KTV",
+    entity: "PERTUBUHAN PROFESIONAL TEKNOLOGI DIGITAL KEDAH (PPTDK)",
+    registration: "PPM-010-02-21042026",
+    taglineMs: "Merancakkan Ekonomi Digital Kedah",
+    taglineEn: "Driving Kedah's Digital Future",
+  },
+  nav: [
+    { label: "About", href: "#about" },
+    { label: "Mission", href: "#mission" },
+    { label: "Ecosystem", href: "#ecosystem" },
+    { label: "Membership", href: "#membership" },
+    { label: "Programs", href: "#programs" },
+    { label: "Partners", href: "#partners" },
+    { label: "Contact", href: "#contact" },
+  ],
+  hero: {
+    headline: "Merancakkan Ekonomi Digital Kedah",
+    sub: "Kedah Tech Valley menghubungkan bakat, industri, akademia, agensi kerajaan, syarikat teknologi dan komuniti untuk memacu masa depan digital Kedah.",
+    ctas: [
+      { label: "Sertai Komuniti", href: "#membership", primary: true },
+      { label: "Jadi Rakan Strategik", href: "#partners" },
+    ],
+    metrics: [
+      "7+ Bulan Konsisten",
+      "Industri × Akademia × Kerajaan",
+      "Komuniti Teknologi Digital",
+      "Driving Kedah's Digital Future",
+      "PPTDK Registered",
+    ],
+    scroll: "Teroka ekosistem KTV",
+  },
+  about: {
+    eyebrow: "Tentang KTV",
+    headline: "Satu Platform Komuniti Untuk Masa Depan Digital Kedah",
+    body: "Kedah Tech Valley ialah platform komuniti yang dibina untuk mempertemukan pemain industri, bakat teknologi, institusi akademik, agensi kerajaan dan organisasi strategik dalam satu ekosistem digital yang lebih tersusun, aktif dan berimpak.",
+    cards: [
+      { title: "Community Platform", body: "Menghubungkan individu, syarikat, akademia dan agensi dalam ekosistem teknologi digital Kedah." },
+      { title: "Digital Economy Catalyst", body: "Mempercepatkan kesedaran, kolaborasi, projek dan peluang ekonomi digital di Kedah." },
+      { title: "Professional Technology Organization", body: "Digerakkan di bawah PPTDK sebagai struktur rasmi untuk membina tadbir urus, jaringan dan hala tuju ekosistem." },
+    ],
+  },
+  storyChapters: [
+    { tag: "01", title: "Community Platform", body: "Ruang berkumpul untuk pemain industri, bakat teknologi, akademia dan agensi.", metric: "Komuniti aktif merentasi Kedah" },
+    { tag: "02", title: "Digital Economy Catalyst", body: "Memangkin kesedaran, projek dan peluang ekonomi digital di negeri.", metric: "Program berterusan setiap bulan" },
+    { tag: "03", title: "Industri × Akademia × Kerajaan", body: "Merapatkan jurang antara keperluan pasaran, penyelidikan dan dasar.", metric: "Tiga pihak, satu meja" },
+    { tag: "04", title: "Strategic Technology Ecosystem", body: "Struktur rasmi di bawah PPTDK untuk tadbir urus dan hala tuju jangka panjang.", metric: "Registered • PPM-010-02-21042026" },
+  ],
+  vision: {
+    eyebrow: "Visi",
+    headline: "Merancakkan Ekonomi Digital Kedah",
+    body: "Menjadikan Kedah sebagai negeri yang aktif, terhubung dan berdaya saing dalam ekonomi digital serantau.",
+  },
+  mission: {
+    eyebrow: "Misi",
+    points: [
+      "Membina dan menghubungkan bakat, pemain industri dan akademia dalam satu komuniti teknologi digital Kedah.",
+      "Meningkatkan bilangan syarikat teknologi.",
+      "Menarik lebih banyak pelaburan.",
+      "Mewujudkan lebih banyak peluang pekerjaan berkemahiran tinggi.",
+      "Memperluas peluang projek dan inisiatif digital.",
+    ],
+  },
+  problem: {
+    eyebrow: "Cabaran Ekosistem",
+    headline: "Kedah Perlukan Ekosistem Teknologi Yang Lebih Terhubung, Terlihat dan Terarah",
+    cards: [
+      "Bakat wujud, tetapi jaringan masih terpisah.",
+      "Banyak idea digital tidak bertemu industri atau agensi yang tepat.",
+      "Pelajar dan bakat muda perlukan laluan lebih jelas ke industri.",
+      "Syarikat teknologi tempatan perlukan lebih banyak peluang, kolaborasi dan visibility.",
+    ],
+  },
+  role: {
+    eyebrow: "Peranan Kedah Tech Valley",
+    headline: "Menghubungkan Komuniti, Membina Jaringan, Membuka Peluang",
+    pillars: [
+      { title: "Tech Awareness", body: "Meningkatkan kesedaran teknologi, AI, software, digital business dan inovasi kepada komuniti Kedah.", icon: "Sparkles" },
+      { title: "Talent & Community", body: "Membina jaringan bakat teknologi dari pelajar, profesional, founder, developer dan komuniti digital.", icon: "Users" },
+      { title: "Industry & Academia Bridge", body: "Merapatkan jurang antara institusi akademik, keperluan industri dan peluang kerjaya masa depan.", icon: "GraduationCap" },
+      { title: "Strategic Collaboration", body: "Menjadi jambatan antara komuniti, syarikat, agensi, pelabur dan organisasi strategik.", icon: "Network" },
+    ],
+  },
+  ecosystem: {
+    eyebrow: "Kekuatan & Sokongan Jaringan",
+    headline: "Satu Ekosistem, Banyak Pemain Penting",
+    note: "Senarai ini mewakili jaringan dan sokongan ekosistem yang sedang berkembang.",
+    groups: [
+      { title: "Community Network", items: ["Amanz Digital", "Kracked Dev", "TechTamu × Noobs / NorTech", "TechSamana"] },
+      { title: "Strategic Agencies", items: ["Kedah Digital Centre", "Kulim Hi-Tech Park", "MDEC Northern", "Yayasan Kedah Sejahtera", "NCER", "Cradle Fund"] },
+      { title: "Tech Industry", items: ["Exabytes", "Local Tech SMEs", "More coming soon"] },
+    ],
+  },
+  membership: {
+    eyebrow: "Keahlian",
+    headline: "Sertai Ekosistem Teknologi Digital Kedah",
+    current: [
+      { title: "Ahli Jawatankuasa", body: "Founder dan pembuat keputusan yang menentukan hala tuju serta tadbir urus Kedah Tech Valley." },
+      { title: "Ahli Awam", body: "Terbuka kepada individu yang ingin membina jaringan, meningkatkan kemahiran, berkongsi pengetahuan dan menyertai inisiatif teknologi digital." },
+      { title: "Organisasi Strategik", body: "Terbuka kepada organisasi yang ingin bekerjasama memperkukuh pembangunan ekosistem teknologi dan ekonomi digital di Kedah." },
+    ],
+    proposed: [
+      "Ahli Profesional",
+      "Ahli Penyokong",
+      "Ahli Pelajar",
+      "Organisasi Korporat",
+      "Ahli Awam",
+      "Organisasi Strategik",
+    ],
+    note: "Struktur keahlian baharu masih dalam perbincangan dan akan dikemaskini dari semasa ke semasa.",
+  },
+  programs: {
+    eyebrow: "Aktiviti & Program",
+    headline: "Program Yang Menggerakkan Kesedaran, Kemahiran dan Kolaborasi",
+    cards: [
+      { title: "Tech Awareness Sessions", body: "Sesi ilmu berkaitan teknologi, AI dan inovasi terkini untuk komuniti.", icon: "Lightbulb" },
+      { title: "Community Meetups", body: "Perjumpaan santai untuk membina jaringan antara pemain teknologi Kedah.", icon: "Coffee" },
+      { title: "Industry Sharing", body: "Perkongsian pengalaman langsung dari pemain industri dan syarikat teknologi.", icon: "Building2" },
+      { title: "Student & Talent Development", body: "Membangunkan pelajar dan bakat muda untuk laluan kerjaya teknologi.", icon: "GraduationCap" },
+      { title: "Startup & Founder Networking", body: "Ruang jaringan untuk founder, pembina produk dan pemula syarikat teknologi.", icon: "Rocket" },
+      { title: "Strategic Collaboration Sessions", body: "Perbincangan strategik bersama agensi, akademia dan rakan korporat.", icon: "Handshake" },
+    ],
+  },
+  cta: {
+    headline: "Bina Masa Depan Digital Kedah Bersama Kami",
+    sub: "Sama ada anda agensi, institusi akademik, syarikat teknologi, pelabur, founder atau komuniti — Kedah Tech Valley membuka ruang untuk kolaborasi yang lebih tersusun dan berimpak.",
+    ctas: [
+      { label: "Jadi Rakan Strategik", href: "#contact", primary: true },
+      { label: "Hubungi KTV", href: "#contact" },
+    ],
+  },
+  news: {
+    eyebrow: "Berita & Perkembangan",
+    headline: "Perkembangan Terkini Ekosistem KTV",
+    items: [
+      { date: "2026", category: "Komuniti", title: "Kedah Tech Valley Memperkukuh Jaringan Komuniti Teknologi Digital", excerpt: "Bagaimana KTV menyatukan pemain komuniti tempatan dalam satu platform yang lebih tersusun." },
+      { date: "2026", category: "Bakat", title: "Membina Laluan Bakat Digital Untuk Generasi Muda Kedah", excerpt: "Inisiatif pembangunan pelajar dan bakat muda merentasi sekolah, kolej dan universiti." },
+      { date: "2026", category: "Ekosistem", title: "Kolaborasi Industri, Akademia dan Agensi Untuk Ekonomi Digital Negeri", excerpt: "Perbincangan strategik yang membentuk hala tuju digital Kedah pada tahun mendatang." },
+    ],
+  },
+  contact: {
+    eyebrow: "Hubungi Kami",
+    headline: "Untuk Kerjasama, Program, Keahlian atau Pertanyaan Rasmi",
+    interests: [
+      "Join as Member",
+      "Strategic Partnership",
+      "Program Collaboration",
+      "Media / Speaking",
+      "General Enquiry",
+    ],
+    socials: ["Website", "Linktree", "TikTok", "Facebook", "WhatsApp", "Threads", "Instagram", "YouTube"],
+  },
+  footer: {
+    columns: [
+      { title: "Kedah Tech Valley", links: ["About", "Mission", "Ecosystem"] },
+      { title: "Membership", links: ["Ahli Awam", "Ahli Pelajar", "Ahli Profesional", "Organisasi Strategik"] },
+      { title: "Programs", links: ["Tech Awareness", "Community Meetup", "Industry Sharing", "Talent Development"] },
+      { title: "Connect", links: ["Contact", "Social Media", "Partner With Us"] },
+    ],
+    legal: "Kedah Tech Valley is driven by PERTUBUHAN PROFESIONAL TEKNOLOGI DIGITAL KEDAH (PPTDK), registered as PPM-010-02-21042026.",
+    copyright: "© 2026 Kedah Tech Valley. All rights reserved.",
+  },
+};

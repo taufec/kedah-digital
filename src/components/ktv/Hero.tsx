@@ -1,0 +1,137 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight, ArrowDown } from "lucide-react";
+import { site } from "@/content/site";
+import { NetworkBackground } from "./NetworkBackground";
+import { KedahMap } from "./KedahMap";
+
+export function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const mapScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const mapOpacity = useTransform(scrollYProgress, [0, 0.8], [0.9, 0.15]);
+  const gridOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
+  const headlineY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const headlineOp = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const cardsY = useTransform(scrollYProgress, [0, 1], [0, -160]);
+
+  return (
+    <section
+      id="top"
+      ref={ref}
+      className="relative isolate flex min-h-[100svh] items-center overflow-hidden"
+      style={{ background: "var(--gradient-hero)" }}
+    >
+      {/* grid layer */}
+      <motion.div style={{ opacity: gridOpacity }} className="pointer-events-none absolute inset-0 grid-lines opacity-40" aria-hidden />
+      {/* network layer */}
+      <div className="pointer-events-none absolute inset-0 opacity-70" aria-hidden>
+        <NetworkBackground />
+      </div>
+      {/* Kedah map — center-right */}
+      <motion.div
+        style={{ scale: mapScale, opacity: mapOpacity }}
+        className="pointer-events-none absolute -right-20 top-1/2 hidden h-[90%] w-[600px] -translate-y-1/2 md:block"
+        aria-hidden
+      >
+        <KedahMap className="h-full w-full" />
+      </motion.div>
+      {/* radial glow */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[120%]" style={{ background: "var(--gradient-glow)" }} aria-hidden />
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-40">
+        <motion.div style={{ y: headlineY, opacity: headlineOp }} className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-primary"
+          >
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+            </span>
+            PPTDK · Registered 21.04.2026
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="mt-6 font-display text-5xl font-semibold leading-[0.98] tracking-tight sm:text-6xl md:text-7xl lg:text-[92px]"
+          >
+            <span className="text-gradient">{site.hero.headline}</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
+          >
+            {site.hero.sub}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8 flex flex-wrap items-center gap-3"
+          >
+            {site.hero.ctas.map((c) => (
+              <a
+                key={c.label}
+                href={c.href}
+                className={
+                  c.primary
+                    ? "group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[0_0_0_1px_oklch(0.85_0.18_145/0.4)] transition-all hover:shadow-[0_0_40px_oklch(0.85_0.18_145/0.5)]"
+                    : "group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-white/30 hover:bg-white/10"
+                }
+              >
+                {c.label}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            ))}
+          </motion.div>
+
+          <div className="mt-10 flex items-center gap-3 text-xs text-muted-foreground/70">
+            <span className="h-px w-8 bg-primary/50" />
+            <span className="font-mono uppercase tracking-[0.2em]">{site.brand.taglineEn}</span>
+          </div>
+        </motion.div>
+
+        {/* Floating metric cards */}
+        <motion.div
+          style={{ y: cardsY }}
+          className="pointer-events-none mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:absolute lg:right-8 lg:top-1/2 lg:mt-0 lg:w-[300px] lg:-translate-y-1/2 lg:grid-cols-1"
+        >
+          {site.hero.metrics.map((m, i) => (
+            <motion.div
+              key={m}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 + i * 0.1 }}
+              className="glass-strong rounded-xl px-4 py-3 shadow-elegant animate-float"
+              style={{ animationDelay: `${i * 0.6}s`, boxShadow: "var(--shadow-elegant)" }}
+            >
+              <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary/80">/ {String(i + 1).padStart(2, "0")}</div>
+              <div className="mt-1 font-display text-sm font-medium text-foreground">{m}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* scroll indicator */}
+      <motion.a
+        href="#about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute inset-x-0 bottom-6 mx-auto flex w-fit items-center gap-2 rounded-full border border-white/10 bg-background/40 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground backdrop-blur-md transition-colors hover:text-foreground"
+      >
+        <span>{site.hero.scroll}</span>
+        <ArrowDown className="h-3 w-3 animate-bounce" />
+      </motion.a>
+    </section>
+  );
+}
