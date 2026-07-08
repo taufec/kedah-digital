@@ -2,12 +2,9 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import { useRef } from "react";
 import { site } from "@/content/site";
 import { SectionHeader } from "./SectionHeader";
-import membersAsset from "@/assets/ktv-members.jpg.asset.json";
-import audienceAsset from "@/assets/ktv-talk-audience.png.asset.json";
-import meetupAsset from "@/assets/ktv-meetup.png.asset.json";
-import nortechAsset from "@/assets/ktv-nortech.png.asset.json";
+import { storyImages } from "./gammaImages";
 
-const CHAPTER_IMAGES = [membersAsset.url, audienceAsset.url, meetupAsset.url, nortechAsset.url];
+const CHAPTER_IMAGES = storyImages;
 
 export function About() {
   return (

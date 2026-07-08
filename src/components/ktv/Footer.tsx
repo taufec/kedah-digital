@@ -1,5 +1,6 @@
 import { site } from "@/content/site";
 import { Wordmark } from "./Wordmark";
+import { gamma } from "./gammaImages";
 
 export function Footer() {
   return (
@@ -12,7 +13,8 @@ export function Footer() {
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
               {site.brand.taglineMs} — {site.brand.taglineEn}.
             </p>
-            <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+            <div className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-4">
+              <img src={gamma.pptdk} alt="PPTDK" className="h-14 w-14 shrink-0 rounded-md bg-white/90 object-contain p-1" loading="lazy" />
               <p className="text-xs leading-relaxed text-muted-foreground">{site.footer.legal}</p>
             </div>
           </div>

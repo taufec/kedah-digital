@@ -1,19 +1,28 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { site } from "@/content/site";
 import { NetworkBackground } from "./NetworkBackground";
-import { KedahMap } from "./KedahMap";
+import { gamma } from "./gammaImages";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const mapScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const mapOpacity = useTransform(scrollYProgress, [0, 0.8], [0.9, 0.15]);
-  const gridOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1]);
-  const headlineY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+
+  // Layered parallax
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.15, 1]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [0.55, 0.15]);
+  const gridOpacity = useTransform(scrollYProgress, [0, 0.4], [0.15, 0.55]);
+  const logoScale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
+  const logoOp = useTransform(scrollYProgress, [0, 0.9], [0.35, 0]);
+  const headlineY = useTransform(scrollYProgress, [0, 1], ["0px", "-80px"]);
   const headlineOp = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const cardsY = useTransform(scrollYProgress, [0, 1], [0, -160]);
+  const cardsY = useTransform(scrollYProgress, [0, 1], ["0px", "-140px"]);
+  const ctaY = useTransform(scrollYProgress, [0, 1], ["0px", "-40px"]);
+
+  const style = reduce ? {} : undefined;
 
   return (
     <section
@@ -22,25 +31,54 @@ export function Hero() {
       className="relative isolate flex min-h-[100svh] items-center overflow-hidden"
       style={{ background: "var(--gradient-hero)" }}
     >
-      {/* grid layer */}
-      <motion.div style={{ opacity: gridOpacity }} className="pointer-events-none absolute inset-0 grid-lines opacity-40" aria-hidden />
-      {/* network layer */}
+      {/* Layer 1 — photo (deepest parallax) */}
+      <motion.div
+        style={style ?? { scale: bgScale, y: bgY, opacity: bgOpacity }}
+        className="pointer-events-none absolute inset-0"
+        aria-hidden
+      >
+        <img
+          src={gamma.members}
+          alt=""
+          className="h-full w-full object-cover object-center"
+          loading="eager"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
+      </motion.div>
+
+      {/* Layer 2 — grid */}
+      <motion.div
+        style={style ?? { opacity: gridOpacity }}
+        className="pointer-events-none absolute inset-0 grid-lines"
+        aria-hidden
+      />
+
+      {/* Layer 3 — network lines */}
       <div className="pointer-events-none absolute inset-0 opacity-70" aria-hidden>
         <NetworkBackground />
       </div>
-      {/* Kedah map — center-right */}
+
+      {/* Layer 4 — Big KTV logo mark, subtle */}
       <motion.div
-        style={{ scale: mapScale, opacity: mapOpacity }}
-        className="pointer-events-none absolute -right-20 top-1/2 hidden h-[90%] w-[600px] -translate-y-1/2 md:block"
+        style={style ?? { scale: logoScale, opacity: logoOp }}
+        className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 md:right-10 md:block lg:right-24"
         aria-hidden
       >
-        <KedahMap className="h-full w-full" />
+        <img src={gamma.logo} alt="" className="h-[420px] w-[420px] object-contain opacity-90 invert" />
       </motion.div>
-      {/* radial glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[120%]" style={{ background: "var(--gradient-glow)" }} aria-hidden />
 
+      {/* Radial glow */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[120%]"
+        style={{ background: "var(--gradient-glow)" }}
+        aria-hidden
+      />
+
+      {/* Content */}
       <div className="relative mx-auto w-full max-w-7xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-40">
-        <motion.div style={{ y: headlineY, opacity: headlineOp }} className="max-w-3xl">
+        <motion.div style={style ?? { y: headlineY, opacity: headlineOp }} className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,24 +111,31 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            style={style ?? { y: ctaY }}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
-            {site.hero.ctas.map((c) => (
-              <a
+            {site.hero.ctas.map((c, i) => (
+              <motion.a
                 key={c.label}
                 href={c.href}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 + i * 0.1 }}
                 className={
                   c.primary
-                    ? "group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[0_0_0_1px_oklch(0.85_0.18_145/0.4)] transition-all hover:shadow-[0_0_40px_oklch(0.85_0.18_145/0.5)]"
+                    ? "group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[0_0_0_1px_oklch(0.85_0.18_145/0.4)] transition-all hover:shadow-[0_0_40px_oklch(0.85_0.18_145/0.55)]"
                     : "group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-white/30 hover:bg-white/10"
                 }
               >
-                {c.label}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
+                {c.primary && (
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                  />
+                )}
+                <span className="relative">{c.label}</span>
+                <ArrowRight className="relative h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </motion.a>
             ))}
           </motion.div>
 
@@ -102,7 +147,7 @@ export function Hero() {
 
         {/* Floating metric cards */}
         <motion.div
-          style={{ y: cardsY }}
+          style={style ?? { y: cardsY }}
           className="pointer-events-none mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:absolute lg:right-8 lg:top-1/2 lg:mt-0 lg:w-[300px] lg:-translate-y-1/2 lg:grid-cols-1"
         >
           {site.hero.metrics.map((m, i) => (
@@ -111,10 +156,15 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 + i * 0.1 }}
-              className="glass-strong rounded-xl px-4 py-3"
-              style={{ boxShadow: "var(--shadow-elegant)" }}
+              className="glass-strong pointer-events-auto rounded-xl px-4 py-3"
+              style={{
+                boxShadow: "var(--shadow-elegant)",
+                transform: reduce ? undefined : `translateX(${i % 2 === 0 ? "0" : "10px"})`,
+              }}
             >
-              <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary/80">/ {String(i + 1).padStart(2, "0")}</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary/80">
+                / {String(i + 1).padStart(2, "0")}
+              </div>
               <div className="mt-1 font-display text-sm font-medium text-foreground">{m}</div>
             </motion.div>
           ))}
