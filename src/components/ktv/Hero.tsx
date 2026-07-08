@@ -66,7 +66,7 @@ export function Hero() {
         className="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 md:right-10 md:block lg:right-24"
         aria-hidden
       >
-        <img src={gamma.logo} alt="" className="h-[420px] w-[420px] object-contain opacity-90 invert" />
+        <img src={gamma.logo} alt="" className="h-[420px] w-[420px] object-contain opacity-90 dark:invert" />
       </motion.div>
 
       {/* Radial glow */}
