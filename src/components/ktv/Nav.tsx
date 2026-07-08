@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
 import { Wordmark } from "./Wordmark";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
