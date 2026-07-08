@@ -35,6 +35,7 @@ export function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <a
             href="#membership"
             className="group hidden items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:shadow-[0_0_24px_oklch(0.85_0.18_145/0.5)] md:inline-flex"
