@@ -36,7 +36,7 @@ export function Contact() {
                   <a
                     key={s}
                     href="#"
-                    className="rounded-full border border-white/10 bg-white/[0.02] px-4 py-2 text-xs font-medium text-muted-foreground transition-all hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
+                    className="rounded-full border border-foreground/10 bg-foreground/[0.02] px-4 py-2 text-xs font-medium text-muted-foreground transition-all hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
                   >
                     {s}
                   </a>
@@ -67,7 +67,7 @@ export function Contact() {
                 name="interest"
                 required
                 defaultValue=""
-                className="mt-2 w-full rounded-lg border border-white/10 bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
+                className="mt-2 w-full rounded-lg border border-foreground/10 bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
               >
                 <option value="" disabled>Pilih satu…</option>
                 {site.contact.interests.map((i) => (
@@ -81,7 +81,7 @@ export function Contact() {
                 name="message"
                 rows={5}
                 required
-                className="mt-2 w-full resize-none rounded-lg border border-white/10 bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
+                className="mt-2 w-full resize-none rounded-lg border border-foreground/10 bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
               />
             </div>
             <button
@@ -119,7 +119,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="mt-2 w-full rounded-lg border border-white/10 bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
+        className="mt-2 w-full rounded-lg border border-foreground/10 bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
       />
     </div>
   );

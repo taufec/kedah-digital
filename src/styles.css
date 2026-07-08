@@ -39,6 +39,40 @@
 
 :root {
   --radius: 0.75rem;
+  color-scheme: light;
+
+  /* Light mode (default) — soft off-white surfaces, deep ink text, Kedah green accent */
+  --background: oklch(0.985 0.003 250);
+  --foreground: oklch(0.18 0.02 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 250);
+  --primary: oklch(0.52 0.14 155);
+  --primary-foreground: oklch(0.985 0.003 250);
+  --secondary: oklch(0.94 0.01 250);
+  --secondary-foreground: oklch(0.18 0.02 250);
+  --muted: oklch(0.95 0.005 250);
+  --muted-foreground: oklch(0.42 0.02 250);
+  --accent: oklch(0.68 0.14 75);
+  --accent-foreground: oklch(0.18 0.02 250);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.985 0.003 250);
+  --border: oklch(0.18 0.02 250 / 10%);
+  --input: oklch(0.18 0.02 250 / 14%);
+  --ring: oklch(0.52 0.14 155 / 60%);
+  --gold: oklch(0.68 0.14 75);
+
+  --gradient-hero: radial-gradient(1200px 700px at 50% 0%, oklch(0.52 0.14 155 / 0.14), transparent 60%),
+                   radial-gradient(900px 600px at 80% 40%, oklch(0.68 0.14 75 / 0.10), transparent 60%),
+                   linear-gradient(180deg, oklch(0.985 0.003 250) 0%, oklch(0.94 0.008 250) 100%);
+  --gradient-glow: radial-gradient(600px 400px at 50% 50%, oklch(0.52 0.14 155 / 0.18), transparent 70%);
+  --shadow-glow: 0 0 60px -10px oklch(0.52 0.14 155 / 0.30);
+  --shadow-elegant: 0 30px 80px -30px oklch(0.18 0.02 250 / 0.25), 0 2px 8px -2px oklch(0.18 0.02 250 / 0.10);
+}
+
+.dark {
+  color-scheme: dark;
   --background: oklch(0.14 0.02 250);
   --foreground: oklch(0.97 0.005 250);
   --card: oklch(0.19 0.02 250);
@@ -53,8 +87,6 @@
   --muted-foreground: oklch(0.68 0.02 250);
   --accent: oklch(0.82 0.12 85);
   --accent-foreground: oklch(0.14 0.02 250);
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.97 0.005 250);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
   --ring: oklch(0.85 0.18 145 / 60%);
@@ -84,20 +116,41 @@ html { scroll-behavior: smooth; }
   ::selection { background: oklch(0.85 0.18 145 / 0.3); color: var(--color-foreground); }
 }
 
+/* Theme-aware surface tint: dark ink on light, white on dark. */
+:root {
+  --tint: 0 0% 0%;
+  --tint-a1: oklch(0.18 0.02 250 / 0.04);
+  --tint-a2: oklch(0.18 0.02 250 / 0.06);
+  --tint-a3: oklch(0.18 0.02 250 / 0.08);
+  --tint-a4: oklch(0.18 0.02 250 / 0.12);
+  --glass-bg-1: oklch(1 0 0 / 0.7);
+  --glass-bg-2: oklch(1 0 0 / 0.5);
+  --grid-line: oklch(0.18 0.02 250 / 0.06);
+}
+.dark {
+  --tint-a1: oklch(1 0 0 / 0.04);
+  --tint-a2: oklch(1 0 0 / 0.06);
+  --tint-a3: oklch(1 0 0 / 0.08);
+  --tint-a4: oklch(1 0 0 / 0.12);
+  --glass-bg-1: oklch(1 0 0 / 0.04);
+  --glass-bg-2: oklch(1 0 0 / 0.02);
+  --grid-line: oklch(1 0 0 / 0.04);
+}
+
 @utility glass {
-  background: linear-gradient(180deg, oklch(1 0 0 / 0.04), oklch(1 0 0 / 0.02));
+  background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
   backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid oklch(1 0 0 / 0.08);
+  border: 1px solid var(--tint-a3);
 }
 
 @utility glass-strong {
-  background: linear-gradient(180deg, oklch(1 0 0 / 0.06), oklch(1 0 0 / 0.03));
+  background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
   backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid oklch(1 0 0 / 0.12);
+  border: 1px solid var(--tint-a4);
 }
 
 @utility text-gradient {
-  background: linear-gradient(135deg, oklch(0.97 0.005 250) 0%, oklch(0.85 0.18 145) 60%, oklch(0.82 0.12 85) 100%);
+  background: linear-gradient(135deg, var(--color-foreground) 0%, var(--color-primary) 60%, var(--color-accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -105,8 +158,8 @@ html { scroll-behavior: smooth; }
 
 @utility grid-lines {
   background-image:
-    linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -115,7 +168,7 @@ html { scroll-behavior: smooth; }
   &:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-glow);
-    border-color: oklch(0.85 0.18 145 / 0.35);
+    border-color: color-mix(in oklab, var(--color-primary) 35%, transparent);
   }
 }
 

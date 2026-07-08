@@ -36,7 +36,7 @@ function Landing() {
         <Contact />
       </main>
       <Footer />
-      <Toaster theme="dark" position="bottom-right" />
+      <Toaster position="bottom-right" />
     </div>
   );
 }

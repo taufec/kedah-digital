@@ -105,10 +105,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  // Light mode is default. The pre-hydration script applies `.dark` only
+  // when the user previously toggled it, preventing a flash.
+  const themeScript = `(function(){try{var t=localStorage.getItem('ktv-theme');if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
   return (
-    <html lang="ms" className="dark">
-      <head><HeadContent /></head>
-      <body className="dark bg-background text-foreground">
+    <html lang="ms">
+      <head>
+        <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="bg-background text-foreground">
         {children}
         <Scripts />
       </body>
