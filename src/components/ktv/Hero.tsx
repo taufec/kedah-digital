@@ -111,8 +111,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 + i * 0.1 }}
-              className="glass-strong rounded-xl px-4 py-3 shadow-elegant animate-float"
-              style={{ animationDelay: `${i * 0.6}s`, boxShadow: "var(--shadow-elegant)" }}
+              className="glass-strong rounded-xl px-4 py-3"
+              style={{ boxShadow: "var(--shadow-elegant)" }}
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary/80">/ {String(i + 1).padStart(2, "0")}</div>
               <div className="mt-1 font-display text-sm font-medium text-foreground">{m}</div>
