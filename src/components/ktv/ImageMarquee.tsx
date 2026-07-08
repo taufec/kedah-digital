@@ -15,7 +15,7 @@ export function ImageMarquee({ images, speed = 40 }: { images: string[]; speed?:
         {doubled.map((src, i) => (
           <div
             key={i}
-            className="group/item relative h-56 w-80 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-card transition-all hover:border-primary/40"
+            className="group/item relative h-56 w-80 shrink-0 overflow-hidden rounded-xl border border-foreground/10 bg-card transition-all hover:border-primary/40"
           >
             <img
               src={src}

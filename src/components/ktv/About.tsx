@@ -46,11 +46,11 @@ function PinnedStory() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
           {/* Left: image stack */}
-          <div className="relative aspect-[4/5] w-full max-w-xl overflow-hidden rounded-2xl border border-white/10 bg-card lg:aspect-square">
+          <div className="relative aspect-[4/5] w-full max-w-xl overflow-hidden rounded-2xl border border-foreground/10 bg-card lg:aspect-square">
             {chapters.map((c, i) => (
               <ChapterImage key={c.tag} chapter={c} index={i} total={N} progress={scrollYProgress} />
             ))}
-            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-foreground/10" />
           </div>
 
           {/* Right: chapters */}
@@ -124,7 +124,7 @@ function ChapterCard({
   const opacity = useTransform(progress, [before, start, end, after], [0.35, 1, 1, 0.35]);
 
   return (
-    <motion.div style={{ opacity }} className="flex gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5">
+    <motion.div style={{ opacity }} className="flex gap-4 rounded-xl border border-foreground/10 bg-foreground/[0.02] p-5">
       <div className="font-mono text-xs text-primary">{chapter.tag}</div>
       <div>
         <div className="font-display text-lg font-semibold text-foreground">{chapter.title}</div>

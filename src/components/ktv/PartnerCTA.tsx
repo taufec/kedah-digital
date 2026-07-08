@@ -33,7 +33,7 @@ export function PartnerCTA() {
                   className={
                     c.primary
                       ? "group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[0_0_0_1px_oklch(0.85_0.18_145/0.4)] transition-all hover:shadow-[0_0_40px_oklch(0.85_0.18_145/0.5)]"
-                      : "group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-white/30 hover:bg-white/10"
+                      : "group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-foreground/30 hover:bg-foreground/10"
                   }
                 >
                   {c.label}

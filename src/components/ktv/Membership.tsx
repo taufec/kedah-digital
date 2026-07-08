@@ -24,7 +24,7 @@ export function Membership() {
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "linear-gradient(180deg, oklch(0.85 0.18 145 / 0.08), transparent 60%)" }} />
                 <div className="relative flex items-center justify-between">
                   <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary/80">/ 0{i + 1}</div>
-                  <div className="grid h-8 w-8 place-items-center rounded-full border border-white/10 text-primary transition-all group-hover:rotate-[-20deg] group-hover:border-primary/50 group-hover:bg-primary/10">
+                  <div className="grid h-8 w-8 place-items-center rounded-full border border-foreground/10 text-primary transition-all group-hover:rotate-[-20deg] group-hover:border-primary/50 group-hover:bg-primary/10">
                     <ArrowRight className="h-3.5 w-3.5" />
                   </div>
                 </div>
@@ -48,7 +48,7 @@ export function Membership() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-4 transition-colors hover:border-accent/40"
+                className="flex items-center gap-3 rounded-xl border border-foreground/10 bg-foreground/[0.02] p-4 transition-colors hover:border-accent/40"
               >
                 <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent/15 text-accent">
                   <Check className="h-4 w-4" />

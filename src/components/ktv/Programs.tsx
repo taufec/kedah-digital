@@ -96,7 +96,7 @@ function GalleryItem({
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7 }}
-      className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-card ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-foreground/10 bg-card ${className}`}
     >
       <img
         src={src}
@@ -114,7 +114,7 @@ function GalleryItem({
             {caption}
           </span>
         </div>
-        <span className="translate-y-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground opacity-0 backdrop-blur-md transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+        <span className="translate-y-2 rounded-full border border-foreground/15 bg-foreground/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground opacity-0 backdrop-blur-md transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
           View
         </span>
       </figcaption>

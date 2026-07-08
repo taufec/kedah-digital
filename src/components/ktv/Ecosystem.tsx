@@ -36,7 +36,7 @@ export function Ecosystem() {
               whileHover={{ y: -4 }}
               className={`glass-strong relative rounded-2xl p-6 transition-all duration-500 ${
                 active === null || active === gi
-                  ? "border-white/15 opacity-100"
+                  ? "border-foreground/15 opacity-100"
                   : "opacity-50"
               } hover:border-primary/40 hover:shadow-[0_0_50px_-15px_oklch(0.85_0.18_145/0.5)]`}
             >
@@ -44,7 +44,7 @@ export function Ecosystem() {
                 <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_currentColor]" />
                 {g.title}
               </div>
-              <ul className="mt-6 flex flex-col divide-y divide-white/5">
+              <ul className="mt-6 flex flex-col divide-y divide-foreground/5">
                 {g.items.map((it, i) => (
                   <li
                     key={it}

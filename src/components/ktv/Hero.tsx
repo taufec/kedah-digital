@@ -124,13 +124,13 @@ export function Hero() {
                 className={
                   c.primary
                     ? "group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[0_0_0_1px_oklch(0.85_0.18_145/0.4)] transition-all hover:shadow-[0_0_40px_oklch(0.85_0.18_145/0.55)]"
-                    : "group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-white/30 hover:bg-white/10"
+                    : "group inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-foreground/30 hover:bg-foreground/10"
                 }
               >
                 {c.primary && (
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                    className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-foreground/30 to-transparent transition-transform duration-700 group-hover:translate-x-full"
                   />
                 )}
                 <span className="relative">{c.label}</span>
@@ -177,7 +177,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute inset-x-0 bottom-6 mx-auto flex w-fit items-center gap-2 rounded-full border border-white/10 bg-background/40 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground backdrop-blur-md transition-colors hover:text-foreground"
+        className="absolute inset-x-0 bottom-6 mx-auto flex w-fit items-center gap-2 rounded-full border border-foreground/10 bg-background/40 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground backdrop-blur-md transition-colors hover:text-foreground"
       >
         <span>{site.hero.scroll}</span>
         <ArrowDown className="h-3 w-3 animate-bounce" />

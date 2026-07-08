@@ -39,7 +39,7 @@ export function VisionMission() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group flex items-start gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-primary/40 hover:bg-white/[0.04]"
+                className="group flex items-start gap-4 rounded-xl border border-foreground/10 bg-foreground/[0.02] p-5 transition-colors hover:border-primary/40 hover:bg-foreground/[0.04]"
               >
                 <div className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-primary/30 bg-primary/10 font-mono text-[11px] text-primary">
                   0{i + 1}
