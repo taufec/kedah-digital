@@ -2194,7 +2194,7 @@ em {
 
   .hero-copy {
     right: 1.1rem;
-    bottom: 4.7rem;
+    bottom: 5.2rem;
     left: 1.1rem;
     max-width: none;
   }
@@ -2205,28 +2205,32 @@ em {
   }
 
   .hero-copy h1 {
-    margin-block: 1.2rem;
-    font-size: clamp(3.3rem, 16vw, 5rem);
-    line-height: 1;
+    margin-block: 0.9rem;
+    font-size: clamp(2.6rem, 12vw, 3.8rem);
+    line-height: 1.02;
   }
 
   .hero-copy > p {
     max-width: 92%;
-    font-size: 0.92rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
 
   .hero-actions,
   .contact-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.5rem;
-    margin-top: 1.4rem;
+    gap: 0.45rem;
+    margin-top: 1rem;
   }
 
   .primary-button,
   .outline-button,
   .text-button {
     width: 100%;
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+    font-size: 0.62rem;
   }
 
   .metric-position--one {
@@ -2234,7 +2238,36 @@ em {
     right: 1rem;
   }
 
-  .metric-position--three,
+  .metric-position--three {
+    right: auto;
+    bottom: 1.1rem;
+    left: 1.1rem;
+  }
+
+  .metric-position--three .metric-card--wide {
+    width: 170px;
+    min-height: 78px;
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .metric-position--three .metric-card--wide strong {
+    margin-top: 0.35rem;
+    font-size: 1rem;
+  }
+
+  .metric-position--three .metric-card--wide > span {
+    font-size: 0.5rem;
+  }
+
+  .metric-position--three .metric-card--wide small {
+    font-size: 0.5rem;
+  }
+
+  .metric-position--three .mini-bars {
+    display: none;
+  }
+
   .hero-side-label {
     display: none;
   }
