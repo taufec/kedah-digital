@@ -361,7 +361,7 @@ function Hero() {
         </motion.div>
         <div className="hero-shade" />
         <motion.div className="digital-grid" style={reduceMotion ? undefined : { opacity: gridOpacity }} />
-        <div className="network-lines network-lines--hero" aria-hidden="true" />
+        
         <ParticleField />
         <motion.img
           className="hero-watermark"
