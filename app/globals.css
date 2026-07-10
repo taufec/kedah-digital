@@ -491,7 +491,7 @@ em {
 }
 
 .metric-card--gold strong {
-  color: var(--gold);
+  color: var(--green);
   font-weight: 700;
 }
 
