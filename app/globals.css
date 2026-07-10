@@ -2189,14 +2189,27 @@ em {
   }
 
   .hero-shade {
-    background: linear-gradient(180deg, rgba(4, 7, 5, 0.55), rgba(4, 7, 5, 0.35) 25%, rgba(4, 7, 5, 0.94) 66%, #040705 100%);
+    background: linear-gradient(180deg, rgba(4, 7, 5, 0.30), rgba(4, 7, 5, 0.15) 30%, rgba(4, 7, 5, 0.70) 66%, rgba(4, 7, 5, 0.92) 100%);
   }
 
   .hero-copy {
-    right: 1.1rem;
-    bottom: 5.2rem;
-    left: 1.1rem;
+    top: 38%;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: auto;
     max-width: none;
+    padding-inline: 1.1rem;
+    text-align: center;
+  }
+
+  .hero-kicker {
+    justify-content: center;
+  }
+
+  .hero-copy h1,
+  .hero-copy > p {
+    margin-inline: auto;
   }
 
   .hero-kicker {
