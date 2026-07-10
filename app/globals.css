@@ -2253,12 +2253,16 @@ em {
   .metric-position--one {
     top: 15%;
     right: 1rem;
+    transform: scale(0.8);
+    transform-origin: top right;
   }
 
   .metric-position--three {
     right: auto;
     bottom: 1.1rem;
     left: 1.1rem;
+    transform: scale(0.8);
+    transform-origin: bottom left;
   }
 
   .metric-position--three .metric-card--wide {
