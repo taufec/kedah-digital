@@ -1,6 +1,8 @@
-import { env } from "cloudflare:workers";
+import { env as rawEnv } from "cloudflare:workers";
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "./schema";
+
+const env = rawEnv as unknown as { DB?: D1Database };
 
 export function getDb() {
   if (!env.DB) {
