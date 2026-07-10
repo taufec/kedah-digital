@@ -2206,7 +2206,7 @@ em {
   .hero-copy h1 {
     margin-block: 1.2rem;
     font-size: clamp(3.3rem, 16vw, 5rem);
-    line-height: 0.83;
+    line-height: 1;
   }
 
   .hero-copy > p {
