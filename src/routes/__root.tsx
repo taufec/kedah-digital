@@ -86,10 +86,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0b0f1a" },
+      { title: "KTV" },
+      { property: "og:title", content: "KTV" },
+      { name: "twitter:title", content: "KTV" },
+      { name: "description", content: "KEDAH TECH VALLEY" },
+      { property: "og:description", content: "KEDAH TECH VALLEY" },
+      { name: "twitter:description", content: "KEDAH TECH VALLEY" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/bb554c16-af31-4c67-b7b8-3a19974ffc5a" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/bb554c16-af31-4c67-b7b8-3a19974ffc5a" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
