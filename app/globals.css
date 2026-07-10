@@ -2188,7 +2188,7 @@ em {
   }
 
   .hero-photo {
-    object-position: 55% center;
+    object-position: center center;
   }
 
   .hero-shade {
@@ -2253,7 +2253,7 @@ em {
   .metric-position--one {
     top: 15%;
     right: 1rem;
-    transform: scale(0.7);
+    transform: scale(0.8);
     transform-origin: top right;
   }
 
@@ -2261,7 +2261,7 @@ em {
     right: auto;
     bottom: 3.5rem;
     left: 1.1rem;
-    transform: scale(0.7);
+    transform: scale(0.8);
     transform-origin: bottom left;
   }
 
