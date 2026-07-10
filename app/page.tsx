@@ -401,7 +401,7 @@ function Hero() {
         <motion.div className="metric-position metric-position--one" style={reduceMotion ? undefined : { y: cardOneY }}>
           <div className="metric-card float-loop">
             <span className="metric-dot" />
-            <strong>Sejak 2025</strong>
+            <strong>Sejak 2020</strong>
             <small>MENYALAKAN CETUSAN TEKNOLOGI NEGERI</small>
           </div>
         </motion.div>
@@ -409,13 +409,13 @@ function Hero() {
           <div className="metric-card metric-card--gold float-loop float-loop--slow">
             <span>STATUS</span>
             <strong>PPTDK</strong>
-            <small>Registered · 21.04.2026</small>
+            <small>BERDAFTAR PADA · 21.04.2026</small>
           </div>
         </motion.div>
         <motion.div className="metric-position metric-position--three" style={reduceMotion ? undefined : { y: cardThreeY }}>
           <div className="metric-card metric-card--wide float-loop float-loop--reverse">
             <span>ECOSYSTEM SIGNAL</span>
-            <strong>3 × 1</strong>
+            <strong>3 × 1 = ∞</strong>
             <small>Industri × Akademia × Kerajaan</small>
             <div className="mini-bars" aria-hidden="true">
               <i /><i /><i /><i /><i />
