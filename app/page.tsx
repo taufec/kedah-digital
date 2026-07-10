@@ -401,8 +401,8 @@ function Hero() {
         <motion.div className="metric-position metric-position--one" style={reduceMotion ? undefined : { y: cardOneY }}>
           <div className="metric-card float-loop">
             <span className="metric-dot" />
-            <strong>7+ Bulan</strong>
-            <small>Konsisten tech awareness</small>
+            <strong>Sejak 2025</strong>
+            <small>MENYALAKAN CETUSAN TEKNOLOGI NEGERI</small>
           </div>
         </motion.div>
         <motion.div className="metric-position metric-position--two" style={reduceMotion ? undefined : { y: cardTwoY }}>
