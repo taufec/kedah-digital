@@ -2238,7 +2238,36 @@ em {
     right: 1rem;
   }
 
-  .metric-position--three,
+  .metric-position--three {
+    right: auto;
+    bottom: 1.1rem;
+    left: 1.1rem;
+  }
+
+  .metric-position--three .metric-card--wide {
+    width: 170px;
+    min-height: 78px;
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .metric-position--three .metric-card--wide strong {
+    margin-top: 0.35rem;
+    font-size: 1rem;
+  }
+
+  .metric-position--three .metric-card--wide > span {
+    font-size: 0.5rem;
+  }
+
+  .metric-position--three .metric-card--wide small {
+    font-size: 0.5rem;
+  }
+
+  .metric-position--three .mini-bars {
+    display: none;
+  }
+
   .hero-side-label {
     display: none;
   }
