@@ -399,10 +399,12 @@ function Hero() {
         </motion.div>
 
         <motion.div className="metric-position metric-position--one" style={reduceMotion ? undefined : { y: cardOneY }}>
-          <div className="metric-card float-loop">
-            <span className="metric-dot" />
-            <strong>Sejak 2020</strong>
-            <small>MENYALAKAN CETUSAN TEKNOLOGI NEGERI</small>
+          <div className="metric-card-mobile-scale">
+            <div className="metric-card float-loop">
+              <span className="metric-dot" />
+              <strong>Sejak 2020</strong>
+              <small>MENYALAKAN CETUSAN TEKNOLOGI NEGERI</small>
+            </div>
           </div>
         </motion.div>
         <motion.div className="metric-position metric-position--two" style={reduceMotion ? undefined : { y: cardTwoY }}>
@@ -413,12 +415,14 @@ function Hero() {
           </div>
         </motion.div>
         <motion.div className="metric-position metric-position--three" style={reduceMotion ? undefined : { y: cardThreeY }}>
-          <div className="metric-card metric-card--wide float-loop float-loop--reverse">
-            <span>ECOSYSTEM SIGNAL</span>
-            <strong>3 × 1 = ∞</strong>
-            <small>Industri × Akademia × Kerajaan</small>
-            <div className="mini-bars" aria-hidden="true">
-              <i /><i /><i /><i /><i />
+          <div className="metric-card-mobile-scale">
+            <div className="metric-card metric-card--wide float-loop float-loop--reverse">
+              <span>ECOSYSTEM SIGNAL</span>
+              <strong>3 × 1 = ∞</strong>
+              <small>Industri × Akademia × Kerajaan</small>
+              <div className="mini-bars" aria-hidden="true">
+                <i /><i /><i /><i /><i />
+              </div>
             </div>
           </div>
         </motion.div>
