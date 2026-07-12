@@ -820,7 +820,7 @@ em {
 }
 
 .story-step.is-active {
-  color: var(--paper);
+  color: #ff00ea;
 }
 
 .story-number {
