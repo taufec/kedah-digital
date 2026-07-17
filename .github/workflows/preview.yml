@@ -83,6 +83,11 @@ jobs:
           # GitHub secret values must be single-line HTTP header values.
           export CLOUDFLARE_API_TOKEN="$(printf '%s' "${CLOUDFLARE_API_TOKEN}" | tr -d '\\r\\n')"
           export CLOUDFLARE_ACCOUNT_ID="$(printf '%s' "${CLOUDFLARE_ACCOUNT_ID}" | tr -d '\\r\\n')"
+          if [[ "${CLOUDFLARE_API_TOKEN}" =~ ^cf[A-Za-z0-9_]+$ ]]; then
+            echo "Cloudflare token shape: valid single-line token (length ${#CLOUDFLARE_API_TOKEN})"
+          else
+            echo "Cloudflare token shape: invalid (length ${#CLOUDFLARE_API_TOKEN})"
+          fi
 
           # vinext still emits the removed Wrangler service-environment field;
           # strip it before handing the generated config to current Wrangler.
