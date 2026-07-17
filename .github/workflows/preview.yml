@@ -79,6 +79,11 @@ jobs:
 
           echo "Deploying non-production preview alias: ${preview_alias}"
           output_file="${RUNNER_TEMP}/cloudflare-preview-upload.log"
+
+          # vinext still emits the removed Wrangler service-environment field;
+          # strip it before handing the generated config to current Wrangler.
+          node -e "const fs=require('fs'); const p='dist/server/wrangler.json'; const c=JSON.parse(fs.readFileSync(p,'utf8')); delete c.legacy_env; fs.writeFileSync(p, JSON.stringify(c, null, 2) + '\\n');"
+
           npx wrangler versions upload \
             --config dist/server/wrangler.json \
             --name "${PREVIEW_WORKER_NAME}" \
