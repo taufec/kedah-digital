@@ -104,7 +104,16 @@ The timeout defaults can be overridden for a controlled canary with `SITES_INSTA
 
 ## Preview Workflow
 
-GitHub Actions runs `npm test` on pushes to `main`, pull requests, and manual workflow dispatch. The workflow uploads the generated `dist` folder as a short-lived `ktv-sites-preview-dist` artifact for inspection.
+GitHub Actions runs the build/test flow on pushes to non-production branches, pull requests, pushes to `main`, and manual workflow dispatch. Non-production branches also upload a Cloudflare Worker preview version using a branch-based alias; `main` is never deployed by this workflow. The workflow uploads the generated `dist` folder as a short-lived `ktv-sites-preview-dist` artifact for inspection.
+
+### Cloudflare Worker preview setup
+
+The preview job requires these GitHub repository secrets:
+
+- `CLOUDFLARE_API_TOKEN`: an account-scoped token with permission to edit Workers Scripts
+- `CLOUDFLARE_ACCOUNT_ID`: the Cloudflare account ID containing the `kedah-digital` Worker
+
+After those secrets are added, pushing any non-`main` branch creates or updates a branch preview URL such as `https://<branch-alias>-kedah-digital.<workers-subdomain>.workers.dev`. Pull requests from this repository receive the URL in a maintained PR comment. Pull requests from forks are intentionally not deployed because GitHub does not expose repository secrets to untrusted fork code.
 
 ## Learn More
 

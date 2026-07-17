@@ -2,14 +2,21 @@ name: KTV Preview
 
 on:
   workflow_dispatch:
-  pull_request:
   push:
-    branches:
-      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+concurrency:
+  group: cloudflare-preview-${{ github.event.pull_request.number || github.ref_name }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
   actions: read
+  pull-requests: write
 
 jobs:
   build-preview:
@@ -20,6 +27,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,3 +49,102 @@ jobs:
           path: dist
           if-no-files-found: error
           retention-days: 7
+
+      - name: Upload Cloudflare Worker preview version
+        id: cloudflare-preview
+        if: >-
+          github.ref != 'refs/heads/main' &&
+          (github.event_name != 'pull_request' ||
+          github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PREVIEW_WORKER_NAME: kedah-digital
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          WRANGLER_WRITE_LOGS: 'false'
+          WRANGLER_LOG_PATH: .wrangler/logs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          source_branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          preview_alias="$(printf '%s' "${source_branch}" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')"
+          preview_alias="${preview_alias:0:48}"
+          if [[ -z "${preview_alias}" ]]; then
+            preview_alias="branch-preview"
+          fi
+
+          echo "Deploying non-production preview alias: ${preview_alias}"
+          output_file="${RUNNER_TEMP}/cloudflare-preview-upload.log"
+          npx wrangler versions upload \
+            --config dist/server/wrangler.json \
+            --name "${PREVIEW_WORKER_NAME}" \
+            --preview-alias "${preview_alias}" \
+            --message "Preview ${source_branch} (${GITHUB_SHA:0:7})" \
+            2>&1 | tee "${output_file}"
+
+          preview_url="$(grep -Eo "https://[a-z0-9-]+-${PREVIEW_WORKER_NAME}\\.[a-z0-9-]+\\.workers\\.dev" "${output_file}" | tail -1 || true)"
+          echo "preview_alias=${preview_alias}" >> "${GITHUB_OUTPUT}"
+          echo "preview_url=${preview_url}" >> "${GITHUB_OUTPUT}"
+
+          {
+            echo "### Cloudflare preview"
+            echo ""
+            echo "- Branch: `${source_branch}`"
+            echo "- Alias: `${preview_alias}`"
+            if [[ -n "${preview_url}" ]]; then
+              echo "- URL: ${preview_url}"
+            else
+              echo "- URL: Wrangler output above did not expose a URL; open the Worker Deployments page to copy it."
+            fi
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Publish preview URL to pull request
+        if: >-
+          github.event_name == 'pull_request' &&
+          steps.cloudflare-preview.outputs.preview_url != ''
+        uses: actions/github-script@v7
+        env:
+          PREVIEW_URL: ${{ steps.cloudflare-preview.outputs.preview_url }}
+          PREVIEW_ALIAS: ${{ steps.cloudflare-preview.outputs.preview_alias }}
+        with:
+          script: |
+            const marker = '<!-- cloudflare-worker-preview -->';
+            const body = [
+              marker,
+              '### Cloudflare preview',
+              '',
+              `Branch preview: [${process.env.PREVIEW_ALIAS}](${process.env.PREVIEW_URL})`,
+              '',
+              'URL ini dikemas kini setiap kali branch ini push commit baru. Ia tidak mengubah production `main`.',
+            ].join('\n');
+
+            const comments = await github.paginate(
+              github.rest.issues.listComments,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                per_page: 100,
+              },
+            );
+            const existing = comments.find((comment) => comment.body?.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
