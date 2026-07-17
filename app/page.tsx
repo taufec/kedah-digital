@@ -28,8 +28,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const stories = [
   {
-    kicker: "01 / CONNECT",
-    title: "Community Platform",
+    kicker: "01 / JALINAN",
+    title: "Platform Komuniti",
     copy: "Mempertemukan profesional teknologi, founder, pelajar, komuniti dan organisasi dalam ruang yang sama supaya bakat yang selama ini terpisah mula saling terlihat.",
     image: "/assets/hero-community.webp",
     imageAlt: "Ahli komuniti teknologi Kedah bergambar bersama selepas satu sesi komuniti",
@@ -38,8 +38,8 @@ const stories = [
     tone: "green",
   },
   {
-    kicker: "02 / CATALYSE",
-    title: "Digital Economy Catalyst",
+    kicker: "02 / LONJAKKAN",
+    title: "Memacu Ekonomi Digital",
     copy: "KTV menggerakkan kesedaran, perbualan dan kolaborasi yang boleh membuka jalan kepada lebih banyak syarikat teknologi, pelaburan, pekerjaan berkemahiran tinggi dan projek digital.",
     image: "/assets/strategy-digital-economy.webp",
     imageAlt: "Sketchnote membesarkan kek ekonomi digital Kedah",
@@ -48,8 +48,8 @@ const stories = [
     tone: "gold",
   },
   {
-    kicker: "03 / BRIDGE",
-    title: "Industry × Academia × Government",
+    kicker: "03 / HUBUNGKAN",
+    title: "Industri × Akademia × Agensi",
     copy: "Merapatkan keperluan industri, kekuatan akademia dan keupayaan agensi supaya idea, bakat dan peluang tidak lagi bergerak secara berasingan.",
     image: "/assets/event-speaker-wide.webp",
     imageAlt: "Sesi perkongsian industri dan komuniti di Kedah",
@@ -58,8 +58,8 @@ const stories = [
     tone: "cyan",
   },
   {
-    kicker: "04 / ORCHESTRATE",
-    title: "Strategic Technology Ecosystem",
+    kicker: "04 / SELARASKAN",
+    title: "Ekosistem Teknologi Strategik",
     copy: "Sebagai connective tissue, KTV membantu menyusun hubungan antara komuniti, syarikat, agensi dan institusi. Jaringan ini kemudian disusun menjadi gerakan yang lebih terarah.",
     image: "/assets/strategy-connective-tissue.webp",
     imageAlt: "Sketchnote Kedah Tech Valley sebagai connective tissue",
@@ -101,7 +101,7 @@ const ecosystemGroups = [
   {
     key: "community",
     eyebrow: "Komuniti",
-    title: "Komuniti Terkemuka",
+    title: "Komuniti Terjalin",
     description: "Gerakan akar umbi yang menghimpunkan builder, founder dan warga teknologi.",
     names: ["Amanz Digital", "Kracked Dev", "TechTamu × Noobs", "TechSamana"],
     icon: Users,
@@ -119,7 +119,7 @@ const ecosystemGroups = [
   {
     key: "industry",
     eyebrow: "Pelaksana",
-    title: "Tech Industri",
+    title: "Industri Teknologi",
     description: "Syarikat teknologi dan SME digital yang membina, menggaji dan membawa solusi ke pasaran.",
     names: ["Exabytes", "Local Tech SMEs", "Founders", "Technology Builders"],
     icon: Cpu,
@@ -128,7 +128,7 @@ const ecosystemGroups = [
   {
     key: "strategic",
     eyebrow: "Kolaborasi",
-    title: "Strategic Organizations",
+    title: "Organisasi Strategik",
     description: "Organisasi yang mahu menyumbang kepakaran, akses, ruang dan peluang kepada ekosistem.",
     names: ["Institusi akademik", "Syarikat korporat", "Komuniti profesional", "Organisasi strategik"],
     icon: Building2,
@@ -215,7 +215,7 @@ function Reveal({
   );
 }
 
-function CountUp({ end, suffix = "" }: { end: number; suffix?: string }) {
+function CountUp({ end, prefix = "", suffix = "" }: { end: number; prefix?: string; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const reduceMotion = useReducedMotion();
@@ -239,6 +239,7 @@ function CountUp({ end, suffix = "" }: { end: number; suffix?: string }) {
 
   return (
     <span ref={ref}>
+      {prefix}
       {reduceMotion ? end : value}
       {suffix}
     </span>
@@ -477,7 +478,7 @@ function StoryDocumentary() {
       <div className="section-intro section-shell">
         <Reveal>
           <p className="eyebrow"><span>01</span> TENTANG KTV</p>
-          <h2>Satu platform.<br /><em>Banyak titik sambungan.</em></h2>
+          <h2>Satu platform.<br /><em>Menghubungi seluruh ekosistem.</em></h2>
         </Reveal>
         <Reveal delay={0.12} className="section-lead-wrap">
           <p className="section-lead">
@@ -504,12 +505,12 @@ function StoryDocumentary() {
           </AnimatePresence>
           <div className="story-visual-shade" />
           <div className="story-signal">
-            <span className="signal-live"><i /> LIVE ECOSYSTEM</span>
+            <span className="signal-live"><i /> EKOSISTEM DINAMIK</span>
             <strong>{current.metric}</strong>
             <small>{current.metricLabel}</small>
           </div>
           <div className="story-data-card">
-            <span>CONNECTION DENSITY</span>
+            <span>TAHAP KETERHUBUNGAN</span>
             <strong>ACTIVE</strong>
             <div className="data-wave"><i /><i /><i /><i /><i /><i /></div>
           </div>
@@ -537,20 +538,20 @@ function StoryDocumentary() {
 function ImpactStrip() {
   return (
     <section className="impact-strip section-shell" aria-label="Ringkasan impak dan struktur KTV">
-      <Reveal className="impact-item">
-        <strong><CountUp end={7} suffix="+" /></strong>
-        <span>Bulan gerakan konsisten</span>
+      <Reveal className="impact-item impact-item--since">
+        <strong>Sejak 2020</strong>
+        <span>Gerakan yang konsisten</span>
       </Reveal>
       <Reveal className="impact-item" delay={0.08}>
-        <strong><CountUp end={4} /></strong>
+        <strong><CountUp end={4} suffix=" Teras" /></strong>
         <span>Hasil ekonomi disasar</span>
       </Reveal>
       <Reveal className="impact-item" delay={0.16}>
-        <strong><CountUp end={6} /></strong>
-        <span>Laluan keahlian dicadang</span>
+        <strong><CountUp end={6} suffix=" Jenis" /></strong>
+        <span>Keahlian dicadang</span>
       </Reveal>
       <Reveal className="impact-item" delay={0.24}>
-        <strong><CountUp end={2026} /></strong>
+        <strong><CountUp end={2026} prefix="Tahun " /></strong>
         <span>PPTDK didaftarkan</span>
       </Reveal>
     </section>
@@ -588,11 +589,11 @@ function StrategyModel() {
         <div className="split-heading">
           <Reveal>
             <p className="eyebrow"><span>02</span> MODEL GERAKAN</p>
-            <h2>Bukan sekadar acara.<br /><em>Sebuah sistem sambungan.</em></h2>
+            <h2>Bukan sekadar acara.<br /><em>Tapi jaringan yang menggerakkan ekosistem.</em></h2>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="section-lead">
-              Peranan KTV ialah mengorkestrasi hubungan dengan membantu bakat, industri, akademia dan agensi menemui konteks serta peluang yang betul.
+              Peranan KTV ialah menyelaraskan hubungan dengan membantu bakat, industri, akademia dan agensi menemui konteks serta peluang yang betul.
             </p>
           </Reveal>
         </div>
@@ -600,7 +601,7 @@ function StrategyModel() {
         <div className="opportunity-panel">
           <Reveal className="opportunity-copy">
             <span className="eyebrow">CABARAN → PELUANG</span>
-            <h3>Bakat wujud. Ekonomi digital boleh dibesarkan.</h3>
+            <h3>Kedah bukan kurang bakat. Kedah perlukan momentum.</h3>
             <p>
               Daripada isu brain drain kepada peluang membesarkan “kek” ekonomi digital, strategi bermula dengan menjadikan bakat dan keupayaan tempatan lebih terlihat.
             </p>
@@ -648,7 +649,7 @@ function EcosystemNetwork() {
         <div className="split-heading ecosystem-heading">
           <Reveal>
             <p className="eyebrow"><span>03</span> KEKUATAN & SOKONGAN JARINGAN</p>
-            <h2>Satu ekosistem.<br /><em>Banyak pemain penting.</em></h2>
+            <h2>Satu ekosistem.<br /><em>Satu gelombang kebangkitan.</em></h2>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="section-lead">
@@ -668,7 +669,7 @@ function EcosystemNetwork() {
             </svg>
             <div className="network-center" aria-label="Kedah Tech Valley, pusat jaringan">
               <img src="/assets/ktv-logo.png" alt="Kedah Tech Valley" />
-              <span>ECOSYSTEM CORE</span>
+              <span>TERAS EKOSISTEM</span>
               <div className="center-pulse" />
             </div>
 
@@ -730,7 +731,7 @@ function Membership() {
         <div className="split-heading">
           <Reveal>
             <p className="eyebrow"><span>04</span> KEAHLIAN</p>
-            <h2>Ada ruang untuk<br /><em>setiap penyumbang.</em></h2>
+            <h2>Bawa kepakaran anda.<br /><em>Kita bina impak bersama.</em></h2>
           </Reveal>
           <Reveal delay={0.12}>
             <div className="draft-note"><i /><span>Struktur enam kategori masih dalam perbincangan dan tertakluk kepada pemuktamadan PPTDK.</span></div>

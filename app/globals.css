@@ -895,18 +895,27 @@ em {
   display: block;
   color: var(--green);
   font-family: var(--mono);
-  font-size: clamp(2.7rem, 4.5vw, 5.2rem);
+  font-size: 40px;
   font-weight: 400;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.04em;
+}
+
+.impact-item strong span {
+  color: var(--green);
+}
+
+.impact-item--since strong {
+  font-size: 23px;
 }
 
 .impact-item span {
   display: block;
-  max-width: 160px;
-  margin-top: 2.3rem;
+  max-width: 260px;
+  margin-top: 1.1rem;
   color: rgba(238, 242, 234, 0.55);
-  font-size: 0.82rem;
-  line-height: 1.5;
+  font-size: 23px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .strategy-section,
