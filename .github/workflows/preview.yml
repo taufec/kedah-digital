@@ -81,8 +81,8 @@ jobs:
           output_file="${RUNNER_TEMP}/cloudflare-preview-upload.log"
 
           # GitHub secret values must be single-line HTTP header values.
-          export CLOUDFLARE_API_TOKEN="$(printf '%s' "${CLOUDFLARE_API_TOKEN}" | tr -d '\\r\\n')"
-          export CLOUDFLARE_ACCOUNT_ID="$(printf '%s' "${CLOUDFLARE_ACCOUNT_ID}" | tr -d '\\r\\n')"
+          export CLOUDFLARE_API_TOKEN="$(printf '%s' "${CLOUDFLARE_API_TOKEN}" | tr -d '\r\n')"
+          export CLOUDFLARE_ACCOUNT_ID="$(printf '%s' "${CLOUDFLARE_ACCOUNT_ID}" | tr -d '\r\n')"
           if [[ "${CLOUDFLARE_API_TOKEN}" =~ ^cf[A-Za-z0-9_]+$ ]]; then
             echo "Cloudflare token shape: valid single-line token (length ${#CLOUDFLARE_API_TOKEN})"
           else
