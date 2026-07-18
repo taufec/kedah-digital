@@ -102,9 +102,23 @@ Use build and validation commands for targeted diagnosis after a remote failure,
 
 The timeout defaults can be overridden for a controlled canary with `SITES_INSTALL_TIMEOUT`, `SITES_INSTALL_KILL_AFTER`, `SITES_BUILD_TIMEOUT`, and `SITES_BUILD_KILL_AFTER`. A timeout fails the command; the helpers never retry an unchanged install or build.
 
-## Preview Workflow
+## Cloudflare Git deployment
 
-GitHub Actions runs `npm test` on pushes to `main`, pull requests, and manual workflow dispatch. The workflow uploads the generated `dist` folder as a short-lived `ktv-sites-preview-dist` artifact for inspection.
+Cloudflare Workers Builds is the sole remote build and deployment system. The
+repository keeps npm deterministic through `package-lock.json`; no GitHub
+Actions workflow installs dependencies, receives Cloudflare credentials, or
+calls Wrangler.
+
+```text
+local/VPS review -> push approved branch -> Cloudflare Workers Builds -> branch preview
+main push -> Cloudflare Workers Builds -> production Worker
+```
+
+Both paths run `npm test`, which builds the application, normalizes and
+validates the generated Worker artifact, and runs the rendered-output tests.
+Cloudflare deploys non-production branches with `npx wrangler versions upload`
+and deploys `main` with `npx wrangler deploy`. Do not push or merge into `main`
+until its branch preview has been reviewed and approved.
 
 ## Learn More
 
