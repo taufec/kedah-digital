@@ -25,4 +25,8 @@ timeout \
   "${SITES_BUILD_TIMEOUT:-3m}" \
   "${vinext}" build
 
+node \
+  "${script_dir}/normalize-wrangler-config.mjs" \
+  "${SITES_PROJECT_ROOT}/dist/server/wrangler.json"
+
 "${script_dir}/validate-artifact.sh"

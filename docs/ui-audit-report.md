@@ -272,3 +272,28 @@ Follow-up alignment correction:
 - Verified at 1405×846 that all four headings have the same 40px font size,
   60px line box, and identical top position; also verified equal heading and
   label metrics at 390×844.
+
+## Cloudflare direct-build migration — 18 Jul 2026
+
+- Selected architecture: GitHub stores approved source while Cloudflare
+  Workers Builds is the sole remote build/deploy system.
+- Package manager: npm only through `package-lock.json`; the conflicting
+  `bun.lock` was removed.
+- Build contract: both production and non-production Cloudflare triggers run
+  `npm test`.
+- Deployment contract: non-production branches use
+  `npx wrangler versions upload`; `main` uses `npx wrangler deploy`.
+- The redundant GitHub Actions Cloudflare deployment workflow was removed.
+- Vinext's generated top-level `legacy_env` field is now removed by
+  `scripts/normalize-wrangler-config.mjs` during the repository build, before
+  artifact validation.
+- Repository policy tests enforce the npm-only and Cloudflare-only contracts.
+- Local policy verification: 7/7 Node tests passed.
+- VPS Linux verification: `npm run install:ci` installed 529 packages from
+  `package-lock.json`; `npm run lint` completed with 0 errors and the existing
+  15 `<img>` warnings; `npm test` completed the production build and passed
+  7/7 tests; generated `dist/server/wrangler.json` contains no `legacy_env`.
+- Remote Cloudflare verification: pending the approved push of
+  `codex/ui-audit-fixes`.
+- Safety state: `main` has not been modified, pushed, merged, or deployed by
+  this migration.
