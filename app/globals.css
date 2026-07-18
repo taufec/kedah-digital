@@ -904,11 +904,7 @@ em {
   color: var(--green);
 }
 
-.impact-item--since strong {
-  font-size: 23px;
-}
-
-.impact-item span {
+.impact-item > span {
   display: block;
   max-width: 260px;
   margin-top: 1.1rem;
@@ -2386,7 +2382,7 @@ em {
     border-bottom: 1px solid var(--line);
   }
 
-  .impact-item span {
+  .impact-item > span {
     margin-top: 1rem;
   }
 

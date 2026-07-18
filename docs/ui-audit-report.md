@@ -262,3 +262,13 @@ Applied the impact-strip browser annotations:
 - Verification: source synced to VPS; live HTML contains `Sejak 2020` and
   `Keahlian dicadang`; local lint passed with 0 errors and 15 existing
   warnings; VPS build and 1/1 rendered-HTML test passed.
+
+Follow-up alignment correction:
+
+- Removed the dedicated 23px `impact-item--since` override so all four impact
+  headings use the shared 40px value style.
+- Scoped label typography to direct-child spans (`.impact-item > span`) so it
+  no longer applies margin, size, and line-height to the nested `CountUp` spans.
+- Verified at 1405×846 that all four headings have the same 40px font size,
+  60px line box, and identical top position; also verified equal heading and
+  label metrics at 390×844.

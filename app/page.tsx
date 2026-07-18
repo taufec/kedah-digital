@@ -538,7 +538,7 @@ function StoryDocumentary() {
 function ImpactStrip() {
   return (
     <section className="impact-strip section-shell" aria-label="Ringkasan impak dan struktur KTV">
-      <Reveal className="impact-item impact-item--since">
+      <Reveal className="impact-item">
         <strong>Sejak 2020</strong>
         <span>Gerakan yang konsisten</span>
       </Reveal>
