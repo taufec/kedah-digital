@@ -293,7 +293,21 @@ Follow-up alignment correction:
   `package-lock.json`; `npm run lint` completed with 0 errors and the existing
   15 `<img>` warnings; `npm test` completed the production build and passed
   7/7 tests; generated `dist/server/wrangler.json` contains no `legacy_env`.
-- Remote Cloudflare verification: pending the approved push of
-  `codex/ui-audit-fixes`.
+- Remote Cloudflare verification: build
+  `3501adac-3e7a-4840-be59-0d2bd4141b6a` for commit `418659a` completed
+  successfully. Cloudflare detected npm 10.9.2/Node.js 22.16.0, ran
+  `npm clean-install`, installed 529 packages, ran `npm test` with 7/7 tests
+  passing, and executed `npx wrangler versions upload`.
+- Cloudflare created exactly one new branch version for that push: version #9,
+  ID `ce488cb9-7695-4ee5-9ab4-6016179acc90`, alias
+  `codex-ui-audit-fixes`.
+- Branch preview:
+  `https://codex-ui-audit-fixes-kedah-digital.taufec.workers.dev` returned
+  HTTP 200 and contained current branch copy including `Platform Komuniti`,
+  `Satu gelombang kebangkitan`, and `Keahlian dicadang`.
+- GitHub reported 0 Actions workflow runs for commit `418659a`.
+- Production isolation: Cloudflare production traffic remained on the existing
+  12 Jul 2026 deployment/version `d97d06d6-a5df-40b2-bb5f-288085225688`;
+  branch version #9 was uploaded for preview only.
 - Safety state: `main` has not been modified, pushed, merged, or deployed by
   this migration.
