@@ -8,6 +8,19 @@ test -s voice-mix.wav
 test -s music.mp3
 rm -rf frames
 mkdir -p frames qa
+python3 - <<'PY'
+from pathlib import Path
+p=Path('render.mjs')
+s=p.read_text()
+s=s.replace("await page.goto('file://'+path.join(film,'visual.html'),{waitUntil:'networkidle0'});", "await page.goto('http://127.0.0.1:8765/visual.html',{waitUntil:'networkidle0'});")
+p.write_text(s)
+PY
+python3 -m http.server 8765 --bind 127.0.0.1 --directory "$FILM" >/tmp/ktv-v3-http.log 2>&1 &
+HTTP_PID=$!
+cleanup(){ kill "$HTTP_PID" 2>/dev/null || true; }
+trap cleanup EXIT
+for _ in 1 2 3 4 5; do curl -fsS http://127.0.0.1:8765/visual.html >/dev/null && break; sleep 1; done
+curl -fsS http://127.0.0.1:8765/visual.html >/dev/null
 echo "=== V3 RESUME FRAME RENDER ==="
 node render.mjs "$FILM"
 DUR="$(python3 -c 'import json; print(json.load(open("timeline.json"))["duration"])')"
