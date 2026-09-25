@@ -13,6 +13,9 @@ from pathlib import Path
 p=Path('render.mjs')
 s=p.read_text()
 s=s.replace("await page.goto('file://'+path.join(film,'visual.html'),{waitUntil:'networkidle0'});", "await page.goto('http://127.0.0.1:8765/visual.html',{waitUntil:'networkidle0'});")
+if 'PAGE_ERROR' not in s:
+    s=s.replace("const page=await browser.newPage();", "const page=await browser.newPage();\npage.on('console', msg=>console.log('PAGE_CONSOLE', msg.type(), msg.text()));\npage.on('pageerror', err=>console.error('PAGE_ERROR', err.stack||err.message));")
+    s=s.replace("await page.evaluate(async()=>{await document.fonts.ready;});", "await page.evaluate(async()=>{await document.fonts.ready;});\nconsole.log('PAGE_STATE='+JSON.stringify(await page.evaluate(()=>({renderAt:typeof window.renderAt,timeline:typeof window.TIMELINE,ready:document.readyState}))));")
 p.write_text(s)
 PY
 python3 -m http.server 8765 --bind 127.0.0.1 --directory "$FILM" >/tmp/ktv-v3-http.log 2>&1 &
