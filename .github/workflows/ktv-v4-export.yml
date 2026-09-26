@@ -1,0 +1,25 @@
+name: KTV V4 Export
+on:
+  push:
+    branches:
+      - artifact/ktv-motion-v4-final
+    paths:
+      - artifacts/ktv-motion-v4-final/export-trigger.txt
+  workflow_dispatch:
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload KTV V4 delivery
+        uses: actions/upload-artifact@v4
+        with:
+          name: ktv-motion-v4-final
+          path: |
+            artifacts/ktv-motion-v4-final/ktv-motion-v4-final.mp4
+            artifacts/ktv-motion-v4-final/ktv-motion-v4-final-compressed.mp4
+            artifacts/ktv-motion-v4-final/contact-sheet.png
+            artifacts/ktv-motion-v4-final/audio-audit.png
+            artifacts/ktv-motion-v4-final/README.txt
+          if-no-files-found: error
+          retention-days: 7
