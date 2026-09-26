@@ -9,7 +9,7 @@
   "scenes": [
     { "file": "scenes/01-hook.html", "duration": 4.0, "energy": [[0,0.35],[1.2,0.58],[3.5,0.48]] },
     { "file": "scenes/02-separated.html", "duration": 3.8, "energy": [[0,0.42],[2.3,0.62],[3.8,0.55]], "in": "reverse", "inVol": 0.45 },
-    { "file": "scenes/03-connect.html", "duration": 5.15, "energy": [[0,0.55],[2.2,0.9],[5.15,0.76]], "in": "riser", "inVol": 0.55 },
+    { "file": "scenes/03-connect.html", "duration": 5.15, "energy": [[0,0.55],[1.55,0.92],[5.15,0.68]] },
     { "file": "scenes/04-proof.html", "duration": 6.15, "energy": [[0,0.62],[2.0,0.78],[6.15,0.68]], "in": "swoosh", "inVol": 0.38 },
     { "file": "scenes/05-cta.html", "duration": 6.9, "energy": [[0,0.58],[2.0,0.66],[6.9,0.42]], "in": "whoosh", "inVol": 0.36 }
   ]
